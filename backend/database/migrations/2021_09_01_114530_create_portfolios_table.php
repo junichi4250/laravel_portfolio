@@ -15,10 +15,10 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->string('url');
-            $table->text('body');
+            $table->unsignedBigInteger('user_id')->comment('ユーザーID');
+            $table->string('title')->comment('アプリ名');
+            $table->string('url')->('アプリURL');
+            $table->text('body')->('アプリ紹介文');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
