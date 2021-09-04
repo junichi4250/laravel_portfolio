@@ -132,7 +132,13 @@ class PortfolioController extends Controller
      */
     public function show(Portfolio $portfolio)
     {
-        return view('portfolios.show', ['portfolio' => $portfolio]);
+        // コメント取得
+        $comments = $portfolio->comments->sortByDesc('created_at');
+
+        return view('portfolios.show', [
+            'portfolio' => $portfolio,
+            'comments' => $comments,
+        ]);
     }
 
     /**
