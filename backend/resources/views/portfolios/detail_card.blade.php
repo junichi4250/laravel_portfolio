@@ -69,8 +69,11 @@
           {{ $portfolio->title }}
         </a>
       </h3>
-      <div>
+      <div class="mb-4">
         <a href="{{ $portfolio->url }}">{{ $portfolio->url }}</a>
+      </div>
+      <div class="card-text">
+        {!! nl2br(e( $portfolio->body )) !!}
       </div>
     </div>
     <div class="card-footer py-1 d-flex justify-content-end bg-white">

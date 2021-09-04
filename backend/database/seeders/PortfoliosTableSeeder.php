@@ -18,6 +18,7 @@ class PortfoliosTableSeeder extends Seeder
             Portfolio::create([
                 'user_id'    => $i,
                 'title'      => 'テスト投稿' .$i,
+                'url'        => 'https://qiita.com/',
                 'body'       => 'テスト投稿詳細' .$i,
                 'created_at' => now(),
                 'updated_at' => now()

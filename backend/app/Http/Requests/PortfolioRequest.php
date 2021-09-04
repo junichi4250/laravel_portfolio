@@ -25,7 +25,8 @@ class PortfolioRequest extends FormRequest
     {
         return [
             'title' => 'required|max:50',
-            'body' => 'required|max:500',
+            'url' => 'max:500',
+            'body' => 'required|max:1000',
             'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
         ];
     }
@@ -33,7 +34,8 @@ class PortfolioRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title' => 'タイトル',
+            'title' => 'アプリ名',
+            'url' => 'URL',
             'body' => '本文',
             'tags' => 'タグ',
         ];
