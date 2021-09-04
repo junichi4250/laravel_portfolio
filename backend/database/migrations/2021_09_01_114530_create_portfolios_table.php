@@ -17,6 +17,7 @@ class CreatePortfoliosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title');
+            $table->string('url');
             $table->text('body');
             $table->timestamps();
 

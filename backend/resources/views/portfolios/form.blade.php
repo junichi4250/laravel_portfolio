@@ -1,7 +1,11 @@
 @csrf
 <div class="md-form">
-  <label>タイトル</label>
+  <label>アプリ名</label>
   <input type="text" name="title" class="form-control" required value="{{ $portfolio->title ?? old('title') }}">
+</div>
+<div class="md-form">
+  <label>アプリURL</label>
+  <input type="text" name="url" class="form-control" required value="{{ $portfolio->url ?? old('url') }}">
 </div>
 <div class="form-group">
   <portfolio-tags-input

@@ -81,7 +81,7 @@ class PortfolioController extends Controller
         });
 
         // 自動補完タグ名
-        $allTagNames =　Tag::all()->map(function ($tag) {
+        $allTagNames = Tag::all()->map(function ($tag) {
             return ['text' => $tag->name];
         });
 
