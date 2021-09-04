@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,11 @@ Route::get('/', [PortfolioController::class, 'index'])->name('portfolios.index')
 Route::resource('/portfolios', PortfolioController::class)->except(['index', 'show'])->middleware('auth');
 Route::resource('/portfolios', PortfolioController::class)->only(['show']);
 
-// いいね関連
+// コメント関連
+Route::resource('/comments', CommentController::class)->only(['store'])->middleware('auth');
+
 Route::prefix('portfolios')->name('portfolios.')->group(function() {
+    // いいね関連
     Route::put('/{portfolio}/like', [PortfolioController::class, 'like'])->name('like')->middleware('auth');
     Route::delete('/{portfolio}/like', [PortfolioController::class, 'unlike'])->name('unlike')->middleware('auth');
 });

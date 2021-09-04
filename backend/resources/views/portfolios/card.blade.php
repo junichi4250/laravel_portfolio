@@ -74,7 +74,13 @@
       </div>
     </div>
     <div class="card-body pt-0 pb-2 pl-3">
-      <div class="card-text">
+      <div class="d-flex align-items-center">
+        {{-- コメントアイコン --}}
+        <a class="in-link p-1" href="{{ route('portfolios.show', ['portfolio' => $portfolio]) }}">
+          <i class="far fa-comment fa-fw fa-lg"></i>
+        </a>
+        <p class="mb-0 mr-2">{{ count($portfolio->comments) }}</p>
+        {{-- いいねアイコン --}}
         <portfolio-like
           :initial-is-liked-by='@json($portfolio->isLikedBy(Auth::user()))'
           :initial-count-likes='@json($portfolio->count_likes)'
