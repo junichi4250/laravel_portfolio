@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TagController;
@@ -17,6 +18,9 @@ use App\Http\Controllers\TagController;
 */
 
 Auth::routes();
+
+// ゲストユーザーログイン
+Route::get('guest', [LoginController::class, 'guestLogin'])->name('login.guest');
 
 // 記事関連
 Route::get('/', [PortfolioController::class, 'index'])->name('portfolios.index');
