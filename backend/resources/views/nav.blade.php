@@ -16,6 +16,12 @@
     </li>
     @endguest
 
+    @guest
+    <li class="nav-item bg-default rounded">
+      <a class="nav-link" href="{{ route('login.guest') }}">かんたんログイン</a>  
+    </li>    
+    @endguest
+
     @auth
     <li class="nav-item">
       <a class="nav-link" href="{{ route('portfolios.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
