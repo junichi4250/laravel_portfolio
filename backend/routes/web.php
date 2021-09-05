@@ -42,6 +42,17 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::get('/{name}', [UserController::class, 'show'])->name('show');
     Route::get('/{name}/likes', [UserController::class, 'likes'])->name('likes');
 
+    // ユーザープロフィール編集画面
+    Route::get('/{name}/edit', [UserController::class, 'edit'])->name('edit');
+    // ユーザープロフィール更新
+    Route::post('/{name}/update', [UserController::class, 'update'])->name('update');
+    // ユーザー退会処理
+    Route::delete('/{name}', [UserController::class, 'destroy'])->name('destroy');
+    // パスワード変更画面の表示
+    Route::get('/{name}/edit_password', [UserController::class, 'editPassword'])->name('edit_password');
+    // パスワード変更
+    Route::patch('/{name}/update_password', [UserController::class, 'updatePassword'])->name('update_password');
+
     // フォロー、フォロワー一覧
     Route::get('/{name}/followings', [UserController::class, 'followings'])->name('followings');
     Route::get('/{name}/followers', [UserController::class, 'followers'])->name('followers');

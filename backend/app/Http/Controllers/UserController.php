@@ -3,10 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    /**
+     * ユーザープロフィール編集画面の表示
+     * 
+     * @param  string  $name
+     * @return View
+     */
+    public function edit(string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        return view('users.edit', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * ユーザープロフィール更新
+     * 
+     * @param  \App\Http\Requests\UserRequest $request
+     * @param  string  $name
+     * @return
+     */
+    public function update(UserRequest $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        $user->fill($request->all())->save();
+
+        return redirect()->route('users.show', [
+            'name' => $user->name
+        ]);
+    }
+
+    /**
+     * アカウント退会処理
+     *
+     * @param  string  $name
+     * @return 
+     */
+    public function destroy(string $name)
+    {
+        return DB::transaction(function () use ($name) {
+            $user = User::where('name', $name)->first();
+            $result = $user->delete();
+
+            return redirect()->route('portfolios.index');
+        });
+    }
+
     /**
      * アカウント詳細画面の表示
      *
@@ -80,7 +132,7 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $name
-     * @return View
+     * @return 
      */
     public function follow(Request $request, string $name)
     {
@@ -102,7 +154,7 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $name
-     * @return View
+     * @return 
      */
     public function unfollow(Request $request, string $name)
     {
@@ -116,5 +168,39 @@ class UserController extends Controller
         $request->user()->followings()->detach($user);
 
         return ['name' => $name];
+    }
+
+    /**
+     * パスワード編集画面の表示
+     * 
+     * @param  string  $name
+     * @return
+     */
+    public function editPassword(string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        return view('users.edit_password', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * パスワード更新
+     *
+     * @param Request $request
+     * @param string $name
+     * @return 
+     */
+    public function updatePassword(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+        return redirect()->route('users.show', [
+            'name' => $user->name
+        ]);
     }
 }
