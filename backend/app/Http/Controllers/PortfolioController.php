@@ -81,7 +81,7 @@ class PortfolioController extends Controller
         });
 
         // 自動補完タグ名
-        $allTagNames =　Tag::all()->map(function ($tag) {
+        $allTagNames = Tag::all()->map(function ($tag) {
             return ['text' => $tag->name];
         });
 
@@ -132,7 +132,13 @@ class PortfolioController extends Controller
      */
     public function show(Portfolio $portfolio)
     {
-        return view('portfolios.show', ['portfolio' => $portfolio]);
+        // コメント取得
+        $comments = $portfolio->comments->sortByDesc('created_at');
+
+        return view('portfolios.show', [
+            'portfolio' => $portfolio,
+            'comments' => $comments,
+        ]);
     }
 
     /**

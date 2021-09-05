@@ -74,7 +74,7 @@
     </div>
     @foreach($portfolio->tags as $tag)
       @if($loop->first)
-        <div class="card-text line-height">
+        <div class="card-text line-height mb-3">
       @endif
         <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border border-default text-default p-1 mr-1 mt-1">
           {{ $tag->hashtag }}
@@ -83,6 +83,9 @@
         </div>
       @endif
     @endforeach
+    <div class="card-text">
+      {!! nl2br(e( $portfolio->body )) !!}
+    </div>
   </div>
   <div class="card-footer py-1 d-flex justify-content-end bg-white">
     <div class="d-flex align-items-center">
