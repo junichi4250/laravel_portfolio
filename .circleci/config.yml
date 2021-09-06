@@ -27,7 +27,7 @@ jobs:
               npm ci
             fi
       - save_cache:
-          key: npm-v1-{{ checksum "package-lock.json" }}
+          key: npm-v1-{{ checksum "backend/package-lock.json" }}
           paths:
             - backend/node_modules
 
