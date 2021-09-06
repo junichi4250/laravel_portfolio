@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class PortfolioTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * いいねを判定するisLikedBy
      */
