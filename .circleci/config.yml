@@ -5,18 +5,20 @@ jobs:
       - image: circleci/php:7.4-node-browsers
     steps:
       - checkout
+
       - run: sudo composer self-update --1
       - restore_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
+          key: composer-v1-{{ checksum "backend/composer.lock" }}
       - run:
           working_directory: backend
           command: composer install -n --prefer-dist
       - save_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
+          key: composer-v1-{{ checksum "backend/composer.lock" }}
           paths:
-            - vendor
+            - backend/vendor
+
       - restore_cache:
-          key: npm-v1-{{ checksum "package-lock.json" }}
+          key: npm-v1-{{ checksum "backend/package-lock.json" }}
       - run:
           working_directory: backend
           name: npm ci
@@ -27,10 +29,12 @@ jobs:
       - save_cache:
           key: npm-v1-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules
+            - backend/node_modules
+
       - run:
           working_directory: backend
           command: npm run dev
+
       - run:
           working_directory: backend
           name: php test
