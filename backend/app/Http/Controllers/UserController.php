@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -188,11 +189,11 @@ class UserController extends Controller
     /**
      * パスワード更新
      *
-     * @param Request $request
+     * @param UpdatePasswordRequest $request
      * @param string $name
      * @return 
      */
-    public function updatePassword(Request $request, string $name)
+    public function updatePassword(UpdatePasswordRequest $request, string $name)
     {
         $user = User::where('name', $name)->first();
 
