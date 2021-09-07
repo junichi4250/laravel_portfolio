@@ -44,7 +44,7 @@ jobs:
     docker:
       - image: circleci/php:7.4-node-browsers
     environment:
-      AWS_DEFAULLT_REGION: ap-northeast-1
+      AWS_DEFAULT_REGION: ap-northeast-1
     steps:
       - checkout
 
