@@ -52,8 +52,8 @@ jobs:
       - restore_cache:
           key: composer-no-dev-v1-{{ checksum "backend/composer.lock" }}
       - run:
-        working_directory: backend
-        command: composer install -n --no-dev --prefer-dist
+          working_directory: backend
+          command: composer install -n --no-dev --prefer-dist
       - save_cache:
           key: composer-no-dev-v1-{{ checksum "composer.lock" }}
           paths:
