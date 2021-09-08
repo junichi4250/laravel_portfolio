@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Portfolio;
 use App\Models\Tag;
 use App\Http\Requests\PortfolioRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 
@@ -25,7 +26,25 @@ class PortfolioController extends Controller
     {
         $portfolios = Portfolio::all()->sortByDesc('created_at');
 
-        return view('portfolios.index', ['portfolios' => $portfolios]);
+        // いいねランキングを取得
+        if (Auth::user() === null) {
+            // ログインしていないとき,いいねランキングは5つ表示
+            $rankingLikesPortfolios = Portfolio::withCount('likes')
+                                        ->orderBy('likes_count', 'desc')
+                                        ->take(5)
+                                        ->get();
+        } else {
+            // ログインしているとき,いいねランキングは10つ表示
+            $rankingLikesPortfolios = Portfolio::withCount('likes')
+                                        ->orderBy('likes_count', 'desc')
+                                        ->take(10)
+                                        ->get();
+        }
+
+        return view('portfolios.index', [
+            'portfolios' => $portfolios,
+            'rankingLikesPortfolios' => $rankingLikesPortfolios,
+        ]);
     }
 
     /**
