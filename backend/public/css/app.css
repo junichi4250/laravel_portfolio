@@ -10002,3 +10002,32 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.new-portfolio-btn {
+  width: 140px;
+  height: 140px;
+  position: fixed;
+  bottom: 35px;
+  right: 60px;
+  z-index: 999;
+  background: linear-gradient(to bottom, #08c8f6, #4d5dfb);
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.new-portfolio-btn p {
+  margin-top: 0;
+  margin-bottom: 3px;
+  font-size: 15px;
+}
+.new-portfolio-btn i.fa-plus {
+  font-size: 48px;
+}
+.new-portfolio-btn:hover {
+  transition: all 0.6s ease;
+  opacity: 0.8;
+  cursor: pointer;
+  color: #fff;
+}
