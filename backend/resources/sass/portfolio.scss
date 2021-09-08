@@ -1,0 +1,5 @@
+@import "component.scss";
+
+.new-portfolio-btn {
+    @include new-post-btn(60px);
+}

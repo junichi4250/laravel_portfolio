@@ -5,7 +5,7 @@
         <i class="fas fa-user-circle fa-3x"></i>
       </a>
       @if( Auth::id() === $user->id )
-      <a href="{{ route('users.edit', ['name' => Auth::user()->name]) }}" class="btn btn-default d-block d-flex justify-content-center align-items-center rounded h-300 ml-3 p-2">
+      <a href="{{ route('users.edit', ['name' => Auth::user()->name]) }}" class="btn btn-default text-white d-block d-flex justify-content-center align-items-center rounded h-300 ml-3 p-2">
         プロフィール編集
       </a>
       @else
