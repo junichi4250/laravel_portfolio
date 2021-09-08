@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'パスワード編集')
+@section('title', 'パスワード変更')
 
 @include('nav')
 
@@ -9,7 +9,7 @@
   <div class="row">
     <div class="mx-auto col-md-7">
       <div class="card">
-        <h2 class="h4 card-header text-center blue-gradient text-white">パスワード編集</h2>
+        <h2 class="h4 card-header text-center blue-gradient text-white">パスワード変更</h2>
         <div class="card-body">
 
         @include('error_card_list')
@@ -28,7 +28,7 @@
                 <label for="new_password">
                   新しいパスワード
                 </label>
-                <input class="form-control" type="password" id="new_password" name="new_password" placeholder="※8文字以上">
+                <input class="form-control" type="password" id="new_password" name="new_password" placeholder="※8文字以上(半角英数記号)">
               </div>
               <div class="form-group">
                 <label for="new_password_confirmation">
