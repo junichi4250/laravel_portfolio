@@ -23,3 +23,4 @@ URL： https://portafoglio.jp/
 　　AWS ( VPC, EC2, RDS, Route53, ALB, ACM, EIP, S3, CodeDeploy)
   
 ## AWS構成図
+<img width="" alt="aws構成図" src="https://user-images.githubusercontent.com/53368968/132815910-9359b60a-79ab-4a2c-aedf-6ff551558cdd.png">
