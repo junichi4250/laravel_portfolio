@@ -1,7 +1,9 @@
 # Portafoglio(ポートフォリオ)
 自分が作ったポートフォリオを投稿または他の人が作ったポートフォリオを閲覧できるSNSサービスです。
 
-URL： https://portafoglio.jp/
+~~URL： https://portafoglio.jp/~~
+
+現在公開を停止しています
 
 ![スクリーンショット 2021-09-10 132900](https://user-images.githubusercontent.com/53368968/132800451-775b3324-04f5-41a4-b6a4-a0358d8a31d3.png)
 
